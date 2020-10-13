@@ -9,3 +9,14 @@ D:\SOF205\ASM\project\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.csproj
 D:\SOF205\ASM\project\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.csproj.CopyComplete
 D:\SOF205\ASM\project\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.dll
 D:\SOF205\ASM\project\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\BUS_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\BUS_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Debug\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.csprojAssemblyReference.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.csproj.CoreCompileInputs.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.csproj.CopyComplete
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Debug\BUS_Qlbanhang.pdb

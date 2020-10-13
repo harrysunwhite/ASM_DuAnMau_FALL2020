@@ -21,6 +21,25 @@ namespace GUI_QLBANHANG
         {
             InitializeComponent();
         }
+        
+        private void showerror()
+        {
+            int soluong;
+            float DonGiaNhap;
+            float DonGiaban;
+
+            if (string.IsNullOrWhiteSpace(txtTenhang.Text)) errorTenHang.SetError(txtTenhang, "Không để trống tên hàng");
+            if (!int.TryParse(txtSoluong.Text, out soluong)) errorSoLuong.SetError(txtSoluong, "Số lượng phải là số nguyên dương");
+            else if (int.Parse(txtSoluong.Text) <= 0) errorSoLuong.SetError(txtSoluong, "SỐ lượng là số nguyên dương");
+            if (!float.TryParse(txtDongianhap.Text, out DonGiaNhap)) errorGiaNhap.SetError(txtDongianhap, "Đơn giá nhập phải là một số");
+            else if (float.Parse(txtDongianhap.Text) <= 0) errorGiaNhap.SetError(txtDongianhap, "Đơn giá nhập phải lớn hơn 0");
+            if (!float.TryParse(txtDongiaban.Text, out DonGiaban)) errorGiaBan.SetError(txtDongiaban, "Đơn giá bán phải là một số");
+            else if (float.Parse(txtDongiaban.Text) <= 0) errorGiaBan.SetError(txtDongiaban, "Đơn giá bán phải lớn hơn 0");
+            string error = errorTenHang.GetError(txtTenhang) + "\n\r" + errorSoLuong.GetError(txtSoluong) + "\n\r" + errorGiaNhap.GetError(txtDongianhap) + "\n\r" + errorGiaBan.GetError(txtDongiaban);
+
+            MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+
+        }
         private void loadFrm()
         {
             txtMahang.Text = null;
@@ -44,6 +63,10 @@ namespace GUI_QLBANHANG
             btnDong.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
+            errorTenHang.SetError(txtTenhang, null);
+            errorSoLuong.SetError(txtSoluong, null);
+            errorGiaNhap.SetError(txtDongianhap, null);
+            errorGiaBan.SetError(txtDongiaban, null);
         }
 
         private void LoadDanhSachHang(DataTable dt)
@@ -96,24 +119,38 @@ namespace GUI_QLBANHANG
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            Image img = pbImage.BackgroundImage;
-            byte[] arr;
-            ImageConverter converter = new ImageConverter();
-            arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+            int soluong; 
+            float DonGiaNhap; 
+            float DonGiaban;
 
-            DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
-                float.Parse(txtDongiaban.Text), arr, txtGhichu.Text, FrmMain.mail);
-            if (BusHang.InsertHang(h))
+            if(!string.IsNullOrWhiteSpace(txtTenhang.Text)&& int.TryParse(txtSoluong.Text, out soluong)&& (int.Parse(txtSoluong.Text)>0 )&& (float.TryParse(txtDongianhap.Text, out DonGiaNhap)) && (float.Parse(txtDongianhap.Text)>0)&& (float.TryParse(txtDongiaban.Text, out DonGiaban)) && (float.Parse(txtDongiaban.Text) > 0))
             {
-                MessageBox.Show("Thêm sản phẩm thành công");
-               
-                loadFrm();
-                LoadDanhSachHang(BusHang.getHang());
+
+                Image img = pbImage.BackgroundImage;
+                byte[] arr;
+                ImageConverter converter = new ImageConverter();
+                arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
+                DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
+                    float.Parse(txtDongiaban.Text), arr, txtGhichu.Text, FrmMain.mail);
+                if (BusHang.InsertHang(h))
+                {
+                    MessageBox.Show("Thêm sản phẩm thành công");
+
+                    loadFrm();
+                    LoadDanhSachHang(BusHang.getHang());
+                }
+                else
+                {
+                    MessageBox.Show("Thêm sản phẩm không thành công");
+                }
             }
             else
             {
-                MessageBox.Show("Thêm sản phẩm không thành công");
-            }
+                showerror();
+            }    
+
+
 
         }
 
@@ -153,6 +190,10 @@ namespace GUI_QLBANHANG
                 pbImage.BackgroundImageLayout = ImageLayout.Stretch;
                 
                 txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
+                errorTenHang.SetError(txtTenhang, null);
+                errorSoLuong.SetError(txtSoluong, null);
+                errorGiaNhap.SetError(txtDongianhap, null);
+                errorGiaBan.SetError(txtDongiaban, null);
             }
             else
             {
@@ -226,33 +267,46 @@ namespace GUI_QLBANHANG
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            Image img = pbImage.BackgroundImage;
-            byte[] arr;
-            ImageConverter converter = new ImageConverter();
-            arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+            int soluong;
+            float DonGiaNhap;
+            float DonGiaban;
 
-            DTO_Hang hang = new DTO_Hang(int.Parse(txtMahang.Text), txtTenhang.Text, int.Parse(txtSoluong.Text),
-                       float.Parse(txtDongianhap.Text),
-                       float.Parse(txtDongiaban.Text), arr, txtGhichu.Text);
-            if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes)
+            if (!string.IsNullOrWhiteSpace(txtTenhang.Text) && int.TryParse(txtSoluong.Text, out soluong) && (int.Parse(txtSoluong.Text) > 0) && (float.TryParse(txtDongianhap.Text, out DonGiaNhap)) && (float.Parse(txtDongianhap.Text) > 0) && (float.TryParse(txtDongiaban.Text, out DonGiaban)) && (float.Parse(txtDongiaban.Text) > 0))
             {
-                if (BusHang.UpdateHang(hang))
+                Image img = pbImage.BackgroundImage;
+                byte[] arr;
+                ImageConverter converter = new ImageConverter();
+                arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+
+                DTO_Hang hang = new DTO_Hang(int.Parse(txtMahang.Text), txtTenhang.Text, int.Parse(txtSoluong.Text),
+                           float.Parse(txtDongianhap.Text),
+                           float.Parse(txtDongiaban.Text), arr, txtGhichu.Text);
+                if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                   
-                    MessageBox.Show("Sửa thành công");
-                    loadFrm();
-                    LoadDanhSachHang(BusHang.getHang()); 
+                    if (BusHang.UpdateHang(hang))
+                    {
+
+                        MessageBox.Show("Sửa thành công");
+                        loadFrm();
+                        LoadDanhSachHang(BusHang.getHang());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa ko thành công");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sửa ko thành công");
+                    loadFrm();
                 }
             }
             else
             {
-                loadFrm();
-            }
+                showerror();
+            }    
+
+                
         }
 
         private void btnTimkiem_Click(object sender, EventArgs e)
@@ -275,6 +329,39 @@ namespace GUI_QLBANHANG
         private void txttimKiem_MouseEnter(object sender, EventArgs e)
         {
             txttimKiem.Text = null;
+        }
+
+        private void txtTenhang_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTenhang.Text)) errorTenHang.SetError(txtTenhang, "Không để trống tên hàng");
+            else errorTenHang.SetError(txtTenhang, null);
+            
+        }
+
+        private void txtSoluong_Validating(object sender, CancelEventArgs e)
+        {
+            int soluong;
+           
+            if (!int.TryParse(txtSoluong.Text, out soluong)) errorSoLuong.SetError(txtSoluong, "Số lượng phải là số nguyên dương");
+            else if (int.Parse(txtSoluong.Text) <= 0) errorSoLuong.SetError(txtSoluong, "SỐ lượng là số nguyên dương");
+            else errorSoLuong.SetError(txtSoluong, null);
+        }
+
+        private void txtDongianhap_Validating(object sender, CancelEventArgs e)
+        {
+            float DonGiaNhap;
+            if (!float.TryParse(txtDongianhap.Text, out DonGiaNhap)) errorGiaNhap.SetError(txtDongianhap, "Đơn giá nhập phải là một số");
+            else if (float.Parse(txtDongianhap.Text) <= 0) errorGiaNhap.SetError(txtDongianhap, "Đơn giá nhập phải lớn hơn 0");
+            else errorGiaNhap.SetError(txtDongianhap, null);
+          
+        }
+
+        private void txtDongiaban_Validating(object sender, CancelEventArgs e)
+        {
+            float DonGiaBan;
+            if (!float.TryParse(txtDongiaban.Text, out DonGiaBan)) errorGiaNhap.SetError(txtDongiaban, "Đơn giá bán phải là một số");
+            else if (float.Parse(txtDongiaban.Text) <= 0) errorGiaBan.SetError(txtDongiaban, "Đơn giá bán phải lớn hơn 0");
+            else errorGiaNhap.SetError(txtDongiaban, null);
         }
     }
 }

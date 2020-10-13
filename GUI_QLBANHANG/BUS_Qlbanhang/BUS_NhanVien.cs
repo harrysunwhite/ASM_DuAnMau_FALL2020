@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Data;
 using System.Net.Mail;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace BUS_Qlbanhang
 {
@@ -48,6 +49,20 @@ namespace BUS_Qlbanhang
            
         }
 
+        public bool IsValidEmail(string emailaddress)// check rule email
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+        
         public void SendMailDoiMK(string email, string matkhau)
         {
 
@@ -168,6 +183,9 @@ namespace BUS_Qlbanhang
         {
             return dalNhanVien.TaoMatKhau(email, matKhauMoi);
         }
-
+        public int TinhTrangNV(string email)
+        {
+            return dalNhanVien.getTinhTrang(email);
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace GUI_QLBANHANG
 
                         try
                         {
-                            busNV.SendMailDoiMK(txtemail.Text, matkhaumoi);
+                            busNV.SendMailDoiMK(txtemail.Text, txtPassNew.Text);
                             
                         }
                         catch (Exception ex)

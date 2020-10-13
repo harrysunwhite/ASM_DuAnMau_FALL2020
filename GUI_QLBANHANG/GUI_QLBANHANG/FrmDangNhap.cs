@@ -112,14 +112,20 @@ namespace GUI_QLBANHANG
            
             if (busNV.DangNhap(nv))
             {
-               
-                FrmMain.mail = nv.EmailNV; 
-                FrmMain.Role = busNV.VaiTroNhanVien(txtemail.Text);
-            
-                MessageBox.Show("Đăng nhập thành công");
-                FrmMain.CheckLogin = 1; 
+                if (busNV.TinhTrangNV(nv.EmailNV) == 1)
+                {
 
-                this.Close();
+                    FrmMain.mail = nv.EmailNV;
+                    FrmMain.Role = busNV.VaiTroNhanVien(txtemail.Text);
+
+                    MessageBox.Show("Đăng nhập thành công");
+                    FrmMain.CheckLogin = 1;
+
+                    this.Close();
+                }
+
+                else MessageBox.Show("Tài khoản này đang bị ngưng hoạt động vui lòng liên hệ quản lý!");
+               
             }
             else
             {
@@ -132,7 +138,7 @@ namespace GUI_QLBANHANG
 
         private void btnQuenmk_Click(object sender, EventArgs e)
         {
-            if (txtemail.Text != "")
+            if (!string.IsNullOrWhiteSpace(txtemail.Text))
             {
                 if (busNV.NhanVienQuenMatKhau(txtemail.Text))
                 {

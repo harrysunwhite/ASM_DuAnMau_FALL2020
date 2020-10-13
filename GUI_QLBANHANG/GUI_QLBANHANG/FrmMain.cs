@@ -15,9 +15,9 @@ namespace GUI_QLBANHANG
 
     public partial class FrmMain : Form
     {
-        public static int CheckLogin = 1;
-        public static int Role = 1;
-        public static string mail="duydt@gmail.com";
+        public static int CheckLogin = 0;
+        public static int Role = 0;
+        public static string mail;
 
 
 
@@ -231,6 +231,11 @@ namespace GUI_QLBANHANG
         private void thoatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 

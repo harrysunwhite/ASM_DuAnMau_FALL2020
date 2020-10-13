@@ -7,3 +7,12 @@ D:\SOF205\ASM\project\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.csproj
 D:\SOF205\ASM\project\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.csproj.CopyComplete
 D:\SOF205\ASM\project\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.dll
 D:\SOF205\ASM\project\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Debug\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Debug\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Debug\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Debug\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.csprojAssemblyReference.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.csproj.CoreCompileInputs.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.csproj.CopyComplete
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Debug\DAL_Qlbanhang.pdb

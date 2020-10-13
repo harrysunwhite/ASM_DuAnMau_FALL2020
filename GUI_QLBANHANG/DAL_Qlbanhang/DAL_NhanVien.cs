@@ -142,6 +142,25 @@ namespace DAL_Qlbanhang
             }
         }
 
+        public int getTinhTrang(string email)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cm = new SqlCommand();
+                cm.Connection = _conn;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "Sp_LayTinhTrangNVẻ ";
+                cm.Parameters.AddWithValue("Email", email);
+
+                return int.Parse(cm.ExecuteScalar().ToString());
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
         // DAL lien quan den tai khoan
         public bool DangNhap(DTO_NhanVien nv)
         {

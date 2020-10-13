@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKhach));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rbnu = new System.Windows.Forms.RadioButton();
             this.rbnam = new System.Windows.Forms.RadioButton();
@@ -55,10 +56,16 @@
             this.btnTimkiem = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvkhach = new System.Windows.Forms.DataGridView();
+            this.errorDT = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorHoTen = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorDiaChi = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvkhach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorHoTen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDiaChi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -121,6 +128,7 @@
             this.txtDiachi.Size = new System.Drawing.Size(288, 20);
             this.txtDiachi.TabIndex = 6;
             this.txtDiachi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiachi.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiachi_Validating);
             // 
             // txtTenkhach
             // 
@@ -128,6 +136,7 @@
             this.txtTenkhach.Name = "txtTenkhach";
             this.txtTenkhach.Size = new System.Drawing.Size(191, 20);
             this.txtTenkhach.TabIndex = 4;
+            this.txtTenkhach.Validating += new System.ComponentModel.CancelEventHandler(this.txtTenkhach_Validating);
             // 
             // txtDienthoai
             // 
@@ -136,6 +145,7 @@
             this.txtDienthoai.Name = "txtDienthoai";
             this.txtDienthoai.Size = new System.Drawing.Size(191, 20);
             this.txtDienthoai.TabIndex = 2;
+            this.txtDienthoai.Validating += new System.ComponentModel.CancelEventHandler(this.txtDienthoai_Validating);
             // 
             // label7
             // 
@@ -315,37 +325,49 @@
             // 
             this.dgvkhach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvkhach.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvkhach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvkhach.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvkhach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvkhach.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvkhach.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvkhach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvkhach.Location = new System.Drawing.Point(0, 0);
             this.dgvkhach.Name = "dgvkhach";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvkhach.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvkhach.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvkhach.Size = new System.Drawing.Size(757, 219);
             this.dgvkhach.TabIndex = 2;
             this.dgvkhach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvkhach_CellClick);
+            // 
+            // errorDT
+            // 
+            this.errorDT.ContainerControl = this;
+            // 
+            // errorHoTen
+            // 
+            this.errorHoTen.ContainerControl = this;
+            // 
+            // errorDiaChi
+            // 
+            this.errorDiaChi.ContainerControl = this;
             // 
             // FrmKhach
             // 
@@ -367,6 +389,9 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvkhach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorHoTen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDiaChi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,5 +421,8 @@
         private System.Windows.Forms.Button btnDanhsach;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txttimKiem;
+        private System.Windows.Forms.ErrorProvider errorDT;
+        private System.Windows.Forms.ErrorProvider errorHoTen;
+        private System.Windows.Forms.ErrorProvider errorDiaChi;
     }
 }

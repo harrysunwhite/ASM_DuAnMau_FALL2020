@@ -204,9 +204,12 @@ namespace DAL_Qlbanhang
             try
             {
                 _conn.Open();
-                string command = "select HinhAnh from Hang where MaHang = @id";
-                SqlCommand cm = new SqlCommand(command, _conn);
-                cm.Parameters.AddWithValue("@id", id);
+                SqlCommand cm = new SqlCommand();
+                cm.Connection = _conn;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "Sp_LayHinhHangHoa";
+                cm.Parameters.AddWithValue("MaHang", id);
+               
                 var hinh = (byte[])cm.ExecuteScalar();
 
                 return hinh;

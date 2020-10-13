@@ -23,7 +23,7 @@ CREATE TABLE Hang(
 	DonGiaNhap [float] NOT NULL,
 	DonGiaBan [float] NOT NULL,
 	HinhAnh image NOT NULL,
-	GhiChu [nvarchar](20) NOT NULL,
+	GhiChu [nvarchar](255),
 	Manv [varchar](20) NOT NULL,
 	CONSTRAINT PK_tblHang PRIMARY KEY CLUSTERED (MaHang ASC )
 ) 
@@ -110,6 +110,16 @@ BEGIN
 	  where email = @email
 END
 go
+
+-- Lấy tính trạng
+Create PROCEDURE Sp_LayTinhTrangNV @email varchar(50)
+AS
+BEGIN
+      SELECT tinhTrang FROM NhanVien
+	  where email = @email
+END
+go
+
 
 
 -- THỦ TỤC QUẢN LÝ NHÂN VIÊN
@@ -301,7 +311,13 @@ BEGIN
       FROM Hang where TenHang like '%' + @tenHang + '%'
 END
 go
-
+-- lấy dữ liệu hình ảnh
+CREATE PROCEDURE Sp_LayHinhHangHoa @MaHang int
+as
+BEGIN
+	select HinhAnh from Hang where MaHang = @MaHang
+END
+go
 -- thống kê hàng hoá theo so lượng
 CREATE PROCEDURE Sp_ThongKe
 AS

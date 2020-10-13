@@ -37,7 +37,7 @@ namespace GUI_QLBANHANG
                     rbNgung.Enabled = true;
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
-                    //show data from selected row to controls
+                  
                     txtEmail.Text = dgvNhanvien.CurrentRow.Cells[0].Value.ToString();
                     txtTennv.Text = dgvNhanvien.CurrentRow.Cells[1].Value.ToString();
                     txtDiachi.Text = dgvNhanvien.CurrentRow.Cells[2].Value.ToString();
@@ -49,6 +49,9 @@ namespace GUI_QLBANHANG
                         rbHoatDong.Checked = true;
                     else
                         rbNgung.Checked = true;
+                    errorEmail.SetError(txtEmail, null);
+                    errorTenNV.SetError(txtTennv, null);
+                    errorDiachi.SetError(txtDiachi, null);
                 }    
                 
             }
@@ -57,6 +60,7 @@ namespace GUI_QLBANHANG
                 MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
+
         }
 
         public bool IsValid(string email)
@@ -92,6 +96,11 @@ namespace GUI_QLBANHANG
             rbNhanvien.Enabled = false;
             rbQuantri.Enabled = false;
             rbHoatDong.Enabled = false;
+            rbNhanvien.Checked = true;
+            rbHoatDong.Checked = true;
+            errorEmail.SetError(txtEmail, null);
+            errorTenNV.SetError(txtTennv, null);
+            errorDiachi.SetError(txtDiachi, null);
         }
 
         private void LoadDanhSach(DataTable dt)
@@ -102,6 +111,17 @@ namespace GUI_QLBANHANG
             dgvNhanvien.Columns[2].HeaderText = "Địa chỉ";
             dgvNhanvien.Columns[3].HeaderText = "Vai Trò";
             dgvNhanvien.Columns[4].HeaderText = "Tình Trạng";
+        }
+
+        private void showerror()
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) errorEmail.SetError(txtEmail, "Nhập email nhân viên");
+            else if (!busNV.IsValidEmail(txtEmail.Text)) errorEmail.SetError(txtEmail, "Địa chỉ email không hợp lệ");
+            if (string.IsNullOrWhiteSpace(txtTennv.Text)) errorTenNV.SetError(txtTennv, "Nhập tên nhân viên");
+            if (string.IsNullOrWhiteSpace(txtDiachi.Text)) errorDiachi.SetError(txtDiachi, "Nhập địa chỉ");
+            string error = errorEmail.GetError(txtEmail) + "\n\r" + errorTenNV.GetError(txtTennv) + "\n\r" + errorDiachi.GetError(txtDiachi);
+
+            MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
         }
 
         
@@ -123,76 +143,95 @@ namespace GUI_QLBANHANG
             btnLuu.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            rbNhanvien.Checked = false;
+            rbNhanvien.Checked = true;
             rbNgung.Checked = false;
             rbQuantri.Checked = false;
-            rbHoatDong.Checked = false;
+            rbHoatDong.Checked = true;
             txtDiachi.Enabled = true;
             rbNhanvien.Enabled = true;
             rbQuantri.Enabled = true;
             rbNgung.Enabled = true;
             rbHoatDong.Enabled = true;
-           
-           
+            errorEmail.SetError(txtEmail, null);
+            errorTenNV.SetError(txtTennv, null);
+            errorDiachi.SetError(txtDiachi, null);
+
         }
 
         
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            
-            int role = 0;
-
-            if (rbQuantri.Checked)
-                role = 1;
-            int tinhtrang = 0;
-            if (rbHoatDong.Checked)
-                tinhtrang = 1;
-            DTO_NhanVien nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang);
-            if (busNV.ThemNhanVien(nv))
+            if(!string.IsNullOrWhiteSpace(txtEmail.Text)&& busNV.IsValidEmail(txtEmail.Text)&& !string.IsNullOrWhiteSpace(txtTennv.Text)&&!string.IsNullOrWhiteSpace(txtDiachi.Text))
             {
-                MessageBox.Show("Thêm thành công");
+                int role = 0;
 
-                try
+                if (rbQuantri.Checked)
+                    role = 1;
+                int tinhtrang = 0;
+                if (rbHoatDong.Checked)
+                    tinhtrang = 1;
+                DTO_NhanVien nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang);
+                if (busNV.ThemNhanVien(nv))
                 {
-                    busNV.SendMailNewNV(txtEmail.Text);
+                    MessageBox.Show("Thêm thành công");
+
+                    try
+                    {
+                        busNV.SendMailNewNV(txtEmail.Text);
+                    }
+                    catch (Exception ex)
+
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    loadFrm();
+                    LoadDanhSach(busNV.getNhanVien());
+
                 }
-                catch (Exception ex)
-
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                loadFrm();
-                LoadDanhSach(busNV.getNhanVien());
-
-            }
 
 
-            else
+                else
                 {
                     MessageBox.Show("Thêm ko thành công");
                 }
+
+            }
+            else
+            {
+                showerror();
+            }    
+           
             
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
-            string email = txtEmail.Text;
-            if (MessageBox.Show("Bạn có chắc muốn xóa nhân viên này", "Confirm",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(!string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                
-                if (busNV.DeleteNhanVien(email))
+
+                string email = txtEmail.Text;
+                if (MessageBox.Show("Bạn có chắc muốn xóa nhân viên này", "Confirm",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Xóa dữ liệu thành công");
-                    loadFrm();
-                    LoadDanhSach(busNV.getNhanVien()); 
-                }
-                else
-                {
-                    MessageBox.Show("Xóa không thành công");
+
+                    if (busNV.DeleteNhanVien(email))
+                    {
+                        MessageBox.Show("Xóa dữ liệu thành công");
+                        loadFrm();
+                        LoadDanhSach(busNV.getNhanVien());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công");
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng nhập Email nhân viên muốn xoá");
+                loadFrm();
+            }    
+
            
         }
 
@@ -203,31 +242,38 @@ namespace GUI_QLBANHANG
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            int role = 0;
-            if (rbQuantri.Checked)
-                role = 1;
-            int tinhtrang = 0;
-            if (rbHoatDong.Checked)
-                tinhtrang = 1;
-            DTO_NhanVien nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang);
-            if (MessageBox.Show("Xác nhận cập nhật thông tin nhân viên", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                == DialogResult.Yes)
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && busNV.IsValidEmail(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtTennv.Text) && !string.IsNullOrWhiteSpace(txtDiachi.Text))
             {
-               
-                if (busNV.UpdateNhanVien(nv))
+                int role = 0;
+                if (rbQuantri.Checked)
+                    role = 1;
+                int tinhtrang = 0;
+                if (rbHoatDong.Checked)
+                    tinhtrang = 1;
+                DTO_NhanVien nv = new DTO_NhanVien(txtEmail.Text, txtTennv.Text, txtDiachi.Text, role, tinhtrang);
+                if (MessageBox.Show("Xác nhận cập nhật thông tin nhân viên", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    == DialogResult.Yes)
                 {
-                    MessageBox.Show("Sửa thành công");
-                    loadFrm();
-                    LoadDanhSach(busNV.getNhanVien());
+
+                    if (busNV.UpdateNhanVien(nv))
+                    {
+                        MessageBox.Show("Sửa thành công");
+                        loadFrm();
+                        LoadDanhSach(busNV.getNhanVien());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sửa ko thành công");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Sửa ko thành công");
+                    loadFrm();
                 }
             }
             else
             {
-                loadFrm();
+                showerror();
             }
         }
 
@@ -270,16 +316,31 @@ namespace GUI_QLBANHANG
             LoadGridView(dgvNhanvien);
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
             txtSearch.Text = null;
         }
 
-      
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) errorEmail.SetError(txtEmail, "Không để trống email nhân viên");
+            else if (!busNV.IsValidEmail(txtEmail.Text)) errorEmail.SetError(txtEmail, "Địa chỉ email không hợp lệ");
+            else errorEmail.SetError(txtEmail, null);
+        }
+
+        private void txtTennv_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTennv.Text)) errorTenNV.SetError(txtTennv, "Không để trống tên nhân viên");
+            else errorTenNV.SetError(txtTennv, null);
+        }
+
+        private void txtDiachi_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDiachi.Text)) errorDiachi.SetError(txtDiachi, "Không để trống địa chỉ");
+            else errorDiachi.SetError(txtDiachi, null);
+
+        }
     }
 }

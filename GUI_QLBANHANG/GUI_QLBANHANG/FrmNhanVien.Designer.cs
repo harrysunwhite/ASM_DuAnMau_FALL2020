@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhanVien));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -58,10 +59,16 @@
             this.btnTimkiem = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvNhanvien = new System.Windows.Forms.DataGridView();
+            this.errorEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorTenNV = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorDiachi = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanvien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTenNV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDiachi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -85,7 +92,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(748, 166);
             this.panel2.TabIndex = 4;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel4
             // 
@@ -157,6 +163,7 @@
             this.txtDiachi.Name = "txtDiachi";
             this.txtDiachi.Size = new System.Drawing.Size(334, 50);
             this.txtDiachi.TabIndex = 6;
+            this.txtDiachi.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiachi_Validating);
             // 
             // txtTennv
             // 
@@ -164,6 +171,7 @@
             this.txtTennv.Name = "txtTennv";
             this.txtTennv.Size = new System.Drawing.Size(191, 22);
             this.txtTennv.TabIndex = 4;
+            this.txtTennv.Validating += new System.ComponentModel.CancelEventHandler(this.txtTennv_Validating);
             // 
             // txtEmail
             // 
@@ -172,6 +180,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(191, 22);
             this.txtEmail.TabIndex = 2;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // label7
             // 
@@ -387,6 +396,18 @@
             this.dgvNhanvien.TabIndex = 6;
             this.dgvNhanvien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanvien_CellClick);
             // 
+            // errorEmail
+            // 
+            this.errorEmail.ContainerControl = this;
+            // 
+            // errorTenNV
+            // 
+            this.errorTenNV.ContainerControl = this;
+            // 
+            // errorDiachi
+            // 
+            this.errorDiachi.ContainerControl = this;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,6 +427,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanvien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorTenNV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDiachi)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -438,5 +462,8 @@
         private System.Windows.Forms.Button btnTimkiem;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvNhanvien;
+        private System.Windows.Forms.ErrorProvider errorEmail;
+        private System.Windows.Forms.ErrorProvider errorTenNV;
+        private System.Windows.Forms.ErrorProvider errorDiachi;
     }
 }

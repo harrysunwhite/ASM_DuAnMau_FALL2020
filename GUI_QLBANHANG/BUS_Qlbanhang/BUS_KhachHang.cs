@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using DAL_Qlbanhang;
 using DTO_Qlbanhang;
+using System.Text.RegularExpressions;
 
 namespace BUS_Qlbanhang
 {
@@ -31,6 +32,14 @@ namespace BUS_Qlbanhang
         public DataTable SearchKhach(string SDT)
         {
             return dalKhachHang.SearchKhach(SDT);
+        }
+
+        public bool isvailphone(string phone)
+        {
+            string strRegex = @"((09|03|07|08|05)+([0-9]{8})\b)";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(phone)) return true;
+            else return false;
         }
     }
 }
