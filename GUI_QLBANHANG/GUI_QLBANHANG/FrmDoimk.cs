@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS_Qlbanhang;
@@ -23,6 +24,7 @@ namespace GUI_QLBANHANG
             txtemail.ReadOnly = true;
             txtemail.Text = email;
         }
+        
 
         private void FrmDoimk_Load(object sender, EventArgs e)
         {
@@ -32,6 +34,19 @@ namespace GUI_QLBANHANG
         private void btnthoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Senmail(string email,string pass)
+        {
+            try
+            {
+                busNV.SendMailDoiMK(email, pass);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btndoimatkhau_Click(object sender, EventArgs e)
@@ -71,17 +86,15 @@ namespace GUI_QLBANHANG
                     {
                         FrmMain.CheckLogin = 0;
 
-                        try
-                        {
-                            busNV.SendMailDoiMK(txtemail.Text, txtPassNew.Text);
-                            
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                       
                         MessageBox.Show("Cập nhật mật khẩu thành công,đăng nhập lại để tiếp tục sử dụng phần mềm");
+
+                        string email = txtemail.Text;
+                        string pass = txtPassNew.Text;
                         this.Close();
+                        Thread send = new Thread(() => Senmail(email, pass));
+                        send.SetApartmentState(ApartmentState.STA);
+                        send.Start();
                     }
                     else
                     {

@@ -12,6 +12,8 @@ using BUS_Qlbanhang;
 using System.Security.Cryptography;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+using System.Threading;
 
 namespace GUI_QLBANHANG
 {
@@ -24,12 +26,76 @@ namespace GUI_QLBANHANG
         {
             InitializeComponent();
         }
-
+   
         private void FrmDangNhap_Load(object sender, EventArgs e)
         {
             FrmMain.CheckLogin = 0;
+            try
+            {
+                string startupPath = Environment.CurrentDirectory;
+                string txtpath = Directory.GetParent(startupPath).Parent.Parent.FullName;
+                string file = txtpath + @"\UserInfor.txt";
+               
+                using (FileStream fsr = new FileStream(file, FileMode.Open, FileAccess.Read))
+                {
+                    using (StreamReader sr = new StreamReader(fsr))
+                    {
+                        txtemail.Text = sr.ReadToEnd();
+                       
+                    }
+                }
+
+
+
+
+            }
+            catch
+            {
+                
+            }
         }
-        
+
+        private void writeUserInfor(DTO_NhanVien nv)
+        {
+
+            try
+            {
+                string startupPath = Environment.CurrentDirectory;
+                string txtpath = Directory.GetParent(startupPath).Parent.Parent.FullName;
+                string file = txtpath + @"\UserInfor.txt";
+                if (!File.Exists(file))
+                {
+                    using (var stream = File.Create(file))
+                    {
+
+                    }
+                    using (StreamWriter sw = new StreamWriter(file))
+                    {
+                        sw.Write(nv.EmailNV);
+                    }
+                }
+                else
+                    using (StreamWriter sw = new StreamWriter(file, false))
+                    {
+                        sw.Write(nv.EmailNV);
+                    }
+
+
+
+
+            }
+
+
+
+
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
         public string RandomString(int size, bool lowerCase)
         {
             StringBuilder builder = new StringBuilder();
@@ -49,6 +115,22 @@ namespace GUI_QLBANHANG
         {
             Random random = new Random();
             return random.Next(min, max);
+        }
+        private bool sendMail(StringBuilder builder)
+        {
+
+            try
+            {
+                busNV.SendMailQuenMK(txtemail.Text, builder.ToString());
+                return true;
+
+            }
+            catch
+            {
+                return false;
+
+            }
+           
         }
 
        
@@ -114,14 +196,32 @@ namespace GUI_QLBANHANG
             {
                 if (busNV.TinhTrangNV(nv.EmailNV) == 1)
                 {
+                 
 
-                    FrmMain.mail = nv.EmailNV;
-                    FrmMain.Role = busNV.VaiTroNhanVien(txtemail.Text);
+                    if (chkbSave.Checked == true) writeUserInfor(nv);
+                   
 
-                    MessageBox.Show("Đăng nhập thành công");
-                    FrmMain.CheckLogin = 1;
+                        FrmMain.mail = nv.EmailNV;
+                        FrmMain.Role = busNV.VaiTroNhanVien(txtemail.Text);
 
+                        MessageBox.Show("Đăng nhập thành công");
+                        FrmMain.CheckLogin = 1;
+                    if (busNV.CheckDoiMatkhau(nv.EmailNV) == 1)
+                    {
+                        FrmMain.CheckDoiMatKhau = 1;
+                        
+                    }
+                    else
+                    {
+                        FrmMain.CheckDoiMatKhau = 0;
+                        MessageBox.Show("Bạn là nhân viên mới vui lòng vào hổ sơ nhân viên dể đổi mật khẩu ở lần đầu đăng nhập");
+                        
+                    }
                     this.Close();
+
+
+
+
                 }
 
                 else MessageBox.Show("Tài khoản này đang bị ngưng hoạt động vui lòng liên hệ quản lý!");
@@ -130,9 +230,9 @@ namespace GUI_QLBANHANG
             else
             {
                 MessageBox.Show("Đăng nhập thất bại, kiểm tra lại email hoặc mật khẩu");
-                txtemail.Text = null;
+              
                 txtmatkhau.Text = null;
-                txtemail.Focus();
+                txtmatkhau.Focus();
             }
         }
 
@@ -147,17 +247,16 @@ namespace GUI_QLBANHANG
                     builder.Append(RandomNumber(1000, 9999));
                    
                     string matkhaumoi = busNV.encryption(builder.ToString());
-                  
-                    busNV.TaoMatKhau(txtemail.Text, matkhaumoi);
-                    try
+                    if (busNV.TaoMatKhau(txtemail.Text, matkhaumoi)&& sendMail(builder))
                     {
-                      busNV.SendMailQuenMK(txtemail.Text, builder.ToString());
-                      MessageBox.Show("Vui lòng kiểm tra hòm thư, Một email với thông tin mật khẩu đã được gửi tới bạn!");
+                        MessageBox.Show("Vui lòng kiểm tra hòm thư, Một email với thông tin mật khẩu đã được gửi tới bạn!");
                     }
-                    catch (Exception ex)
+                        
+
+                    else
                     {
-                        MessageBox.Show(ex.Message);
-                    }
+                        MessageBox.Show("Đổi mật khẩu không thành công");
+                    }    
                     
                 }
                 else

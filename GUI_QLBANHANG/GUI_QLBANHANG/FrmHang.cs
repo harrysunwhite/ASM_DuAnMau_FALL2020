@@ -37,7 +37,7 @@ namespace GUI_QLBANHANG
             else if (float.Parse(txtDongiaban.Text) <= 0) errorGiaBan.SetError(txtDongiaban, "Đơn giá bán phải lớn hơn 0");
             string error = errorTenHang.GetError(txtTenhang) + "\n\r" + errorSoLuong.GetError(txtSoluong) + "\n\r" + errorGiaNhap.GetError(txtDongianhap) + "\n\r" + errorGiaBan.GetError(txtDongiaban);
 
-            MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+            MessageBox.Show(error, "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Information); 
 
         }
         private void loadFrm()
@@ -319,7 +319,7 @@ namespace GUI_QLBANHANG
             }
             else
             {
-                MessageBox.Show("Không tìm thấy san pham", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không tìm thấy sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             txttimKiem.Text = "Nhập tên sản phẩm";
            

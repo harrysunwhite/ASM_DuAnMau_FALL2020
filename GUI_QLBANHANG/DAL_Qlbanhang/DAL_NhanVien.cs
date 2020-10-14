@@ -11,6 +11,7 @@ namespace DAL_Qlbanhang
 {
     public class DAL_NhanVien:Dbconnect
     {
+        //Lấy danh sách nhân viên
         public DataTable getNhanVien()
         {
             
@@ -32,6 +33,7 @@ namespace DAL_Qlbanhang
             }
 
         }
+        //Thêm nhân viên
         public bool ThemNhanVien(DTO_NhanVien nv)
         {  
             try
@@ -61,7 +63,7 @@ namespace DAL_Qlbanhang
             }
             return false;
         }
-
+        // Cập nhật nhân viên
         public bool UpdateNhanVien(DTO_NhanVien nv)
         {
             try
@@ -91,6 +93,8 @@ namespace DAL_Qlbanhang
             }
             return false;
         }
+
+        // Xoá Nhân viên
 
         public bool DeleteNhanVien(string email)
         {
@@ -142,6 +146,8 @@ namespace DAL_Qlbanhang
             }
         }
 
+        //Lấy tình trạng nhân viên
+
         public int getTinhTrang(string email)
         {
             try
@@ -150,7 +156,7 @@ namespace DAL_Qlbanhang
                 SqlCommand cm = new SqlCommand();
                 cm.Connection = _conn;
                 cm.CommandType = CommandType.StoredProcedure;
-                cm.CommandText = "Sp_LayTinhTrangNVẻ ";
+                cm.CommandText = "Sp_LayTinhTrangNV ";
                 cm.Parameters.AddWithValue("Email", email);
 
                 return int.Parse(cm.ExecuteScalar().ToString());
@@ -292,6 +298,27 @@ namespace DAL_Qlbanhang
                 _conn.Close();
             }
             return false;
+        }
+
+        // kiểm tra đăng nhập lần đầu.
+        public int CheckChangePass(string email)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cm = new SqlCommand();
+                cm.Connection = _conn;
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "Sp_CheckChangePass";
+                cm.Parameters.AddWithValue("Email", email);
+
+                return int.Parse(cm.ExecuteScalar().ToString());
+
+            }
+            finally
+            {
+                _conn.Close();
+            }
         }
 
     }

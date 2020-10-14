@@ -45,6 +45,11 @@ ALTER TABLE Hang
 ADD CONSTRAINT FK_hang_nv
 FOREIGN KEY (Manv) REFERENCES NhanVien(Manv)ON UPDATE CASCADE;
 
+alter table nhanvien
+add Changepass tinyint DEFAULT ((0)) NOT NULL;
+
+
+
 -- SP liên quan đến tài khoản
 -- Đăng nhập
 go
@@ -75,7 +80,7 @@ go
 -- tạo mật khẩu mới
 Create PROCEDURE Sp_TaoMatKhauMoi
 @email nvarchar(50),
-@matkhau nvarchar(20)
+@matkhau nvarchar(max)
 AS
 BEGIN
 UPDATE NhanVien SET matKhau = @matkhau
@@ -86,8 +91,8 @@ go
 CREATE procedure Sp_DoiMatKhau
 (
 @email Varchar(50),
-@opwd nVarchar(50),
-@npwd nVarchar(50)
+@opwd nVarchar(max),
+@npwd nVarchar(max)
 )
 AS
 Begin
@@ -96,6 +101,7 @@ select @op= matKhau from NhanVien where email=@email
 if @op=@opwd
 	begin
 		update NhanVien set matKhau=@npwd where email=@email
+		update NhanVien set Changepass = 1 where email = @email
 		return 1
 	end
 	else
@@ -119,7 +125,14 @@ BEGIN
 	  where email = @email
 END
 go
-
+-- kiểm tra đăng nhập lần đầu.
+Create PROCEDURE Sp_CheckChangePass @email varchar(50)
+AS
+BEGIN
+      SELECT Changepass FROM NhanVien
+	  where email = @email
+END
+go
 
 
 -- THỦ TỤC QUẢN LÝ NHÂN VIÊN

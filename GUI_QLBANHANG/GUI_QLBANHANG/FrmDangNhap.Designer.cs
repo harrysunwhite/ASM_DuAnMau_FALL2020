@@ -33,7 +33,7 @@
             this.txtmatkhau = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkbSave = new System.Windows.Forms.CheckBox();
             this.btndangnhap = new System.Windows.Forms.Button();
             this.txtemail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -101,17 +101,17 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Email Đăng Nhập";
             // 
-            // checkBox1
+            // chkbSave
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.checkBox1.Location = new System.Drawing.Point(18, 185);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(148, 21);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "Ghi Nhớ Tài Khoản";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkbSave.AutoSize = true;
+            this.chkbSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkbSave.ForeColor = System.Drawing.Color.DimGray;
+            this.chkbSave.Location = new System.Drawing.Point(18, 185);
+            this.chkbSave.Name = "chkbSave";
+            this.chkbSave.Size = new System.Drawing.Size(148, 21);
+            this.chkbSave.TabIndex = 12;
+            this.chkbSave.Text = "Ghi Nhớ Tài Khoản";
+            this.chkbSave.UseVisualStyleBackColor = true;
             // 
             // btndangnhap
             // 
@@ -169,7 +169,7 @@
             this.Controls.Add(this.txtmatkhau);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkbSave);
             this.Controls.Add(this.btndangnhap);
             this.Controls.Add(this.txtemail);
             this.Controls.Add(this.label1);
@@ -193,7 +193,7 @@
         private System.Windows.Forms.TextBox txtmatkhau;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkbSave;
         private System.Windows.Forms.Button btndangnhap;
         private System.Windows.Forms.TextBox txtemail;
         private System.Windows.Forms.Label label1;

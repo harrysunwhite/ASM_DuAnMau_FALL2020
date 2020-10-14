@@ -18,6 +18,7 @@ namespace GUI_QLBANHANG
         public static int CheckLogin = 0;
         public static int Role = 0;
         public static string mail;
+        public static int CheckDoiMatKhau = 0;
 
 
 
@@ -26,6 +27,8 @@ namespace GUI_QLBANHANG
         public void opennewapp()
         {
             FrmMain FMain = new FrmMain();
+            CheckLogin = 0;
+
             Application.Run(FMain);
         }
       
@@ -37,7 +40,7 @@ namespace GUI_QLBANHANG
             FrmMain_Load(sender, e);
         }
 
-        private void openFrm(Form frm, object sender, EventArgs e)
+        public void openFrm(Form frm, object sender, EventArgs e)
         {
             if (!CheckExistFrm(frm.Name))
             {
@@ -89,6 +92,12 @@ namespace GUI_QLBANHANG
 
         }
 
+       public void CheckChangePass()
+        {
+            danhMucToolStripMenuItem.Visible = false;
+            thongKeHangHoaToolStripMenuItem.Visible = false;
+
+        }
         private void CloseFrm(object sender, FormClosedEventArgs e)
         {
            
@@ -151,6 +160,10 @@ namespace GUI_QLBANHANG
                     {
                         PhanQuyen();
                     }
+                    if(CheckDoiMatKhau == 0)
+                    {
+                        CheckChangePass();
+                    }    
                 }
                 else
                 {

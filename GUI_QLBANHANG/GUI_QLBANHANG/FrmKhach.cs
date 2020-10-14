@@ -30,7 +30,7 @@ namespace GUI_QLBANHANG
 
             string error = errorDT.GetError(txtDienthoai) + "\n\r" + errorHoTen.GetError(txtTenkhach) + "\n\r" + errorDiaChi.GetError(txtDiachi);
 
-            MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+            MessageBox.Show(error, "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
 
         }
         private void loadFrm()

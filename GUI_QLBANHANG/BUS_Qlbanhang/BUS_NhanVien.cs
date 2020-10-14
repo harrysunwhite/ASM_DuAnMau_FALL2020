@@ -187,5 +187,9 @@ namespace BUS_Qlbanhang
         {
             return dalNhanVien.getTinhTrang(email);
         }
+        public int CheckDoiMatkhau(string email)
+        {
+            return dalNhanVien.CheckChangePass(email);
+        }
     }
 }

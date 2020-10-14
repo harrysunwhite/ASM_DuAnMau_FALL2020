@@ -121,7 +121,7 @@ namespace GUI_QLBANHANG
             if (string.IsNullOrWhiteSpace(txtDiachi.Text)) errorDiachi.SetError(txtDiachi, "Nhập địa chỉ");
             string error = errorEmail.GetError(txtEmail) + "\n\r" + errorTenNV.GetError(txtTennv) + "\n\r" + errorDiachi.GetError(txtDiachi);
 
-            MessageBox.Show(error, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+            MessageBox.Show(error, "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Information); ;
         }
 
         
