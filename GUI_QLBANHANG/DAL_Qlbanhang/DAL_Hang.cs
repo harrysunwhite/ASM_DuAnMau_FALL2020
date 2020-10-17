@@ -163,7 +163,7 @@ namespace DAL_Qlbanhang
                 _conn.Open();
                 SqlCommand cm = new SqlCommand();
                 cm.CommandType = CommandType.StoredProcedure;
-                cm.CommandText = "Sp_ThongKe";
+                cm.CommandText = "Sp_ThongKeTonKho";
                 cm.Connection = _conn;
                 
                 DataTable dtHang = new DataTable();

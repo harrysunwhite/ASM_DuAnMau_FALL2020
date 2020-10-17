@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Qlbanhang", "DAL_Qlbanh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BUS_Qlbanhang", "BUS_Qlbanhang\BUS_Qlbanhang.csproj", "{350E1FB4-0864-461B-B622-8B6BC9751F41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_QlbanhangTests", "DAL_QlbanhangTests\DAL_QlbanhangTests.csproj", "{96D23ED8-972D-4A3D-86A6-14B82B25EAA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{350E1FB4-0864-461B-B622-8B6BC9751F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{350E1FB4-0864-461B-B622-8B6BC9751F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{350E1FB4-0864-461B-B622-8B6BC9751F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D23ED8-972D-4A3D-86A6-14B82B25EAA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D23ED8-972D-4A3D-86A6-14B82B25EAA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D23ED8-972D-4A3D-86A6-14B82B25EAA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D23ED8-972D-4A3D-86A6-14B82B25EAA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

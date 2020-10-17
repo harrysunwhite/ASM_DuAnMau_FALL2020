@@ -67,6 +67,10 @@ namespace GUI_QLBANHANG
             errorSoLuong.SetError(txtSoluong, null);
             errorGiaNhap.SetError(txtDongianhap, null);
             errorGiaBan.SetError(txtDongiaban, null);
+            string startupPath = Environment.CurrentDirectory;
+            string file = startupPath + @"\Shopping.png";
+            pbImage.BackgroundImage = Image.FromFile(file);
+            pbImage.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void LoadDanhSachHang(DataTable dt)
@@ -77,8 +81,10 @@ namespace GUI_QLBANHANG
             dgvhang.Columns[2].HeaderText = "Số Lượng";
             dgvhang.Columns[3].HeaderText = "Đơn Giá Nhập";
             dgvhang.Columns[4].HeaderText = "Đơn Giá Bán";
+
             dgvhang.Columns[5].Visible = false;
-            dgvhang.Columns[6].Visible = false;
+            dgvhang.Columns[6].HeaderText = "Ghi chú";
+            dgvhang.Columns[7].HeaderText = "Mã nhân viên";
         }
         private void ChangeImage(ref string Path)
         {
@@ -169,31 +175,37 @@ namespace GUI_QLBANHANG
         {
             if (dgvhang.Rows.Count > 1)
             {
-                btnOpenDialog.Enabled = true;
-                btnLuu.Enabled = false;
-                txtTenhang.Enabled = true;
-                txtSoluong.Enabled = true;
-                txtDongianhap.Enabled = true;
-                txtDongiaban.Enabled = true;
-                txtGhichu.Enabled = true;
-                txtTenhang.Focus();
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                txtMahang.Text = dgvhang.CurrentRow.Cells["MaHang"].Value.ToString();
-                txtTenhang.Text = dgvhang.CurrentRow.Cells["TenHang"].Value.ToString();
-                txtSoluong.Text = dgvhang.CurrentRow.Cells["SoLuong"].Value.ToString();
-                txtDongianhap.Text = dgvhang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
-                txtDongiaban.Text = dgvhang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
-            
-                MemoryStream mem = new MemoryStream(BusHang.gethinhHang(txtMahang.Text));
-                pbImage.BackgroundImage = Image.FromStream(mem);
-                pbImage.BackgroundImageLayout = ImageLayout.Stretch;
-                
-                txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
-                errorTenHang.SetError(txtTenhang, null);
-                errorSoLuong.SetError(txtSoluong, null);
-                errorGiaNhap.SetError(txtDongianhap, null);
-                errorGiaBan.SetError(txtDongiaban, null);
+                if (dgvhang.CurrentRow.Index < dgvhang.Rows.Count - 1)
+                {
+
+
+
+                    btnOpenDialog.Enabled = true;
+                    btnLuu.Enabled = false;
+                    txtTenhang.Enabled = true;
+                    txtSoluong.Enabled = true;
+                    txtDongianhap.Enabled = true;
+                    txtDongiaban.Enabled = true;
+                    txtGhichu.Enabled = true;
+                    txtTenhang.Focus();
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                    txtMahang.Text = dgvhang.CurrentRow.Cells["MaHang"].Value.ToString();
+                    txtTenhang.Text = dgvhang.CurrentRow.Cells["TenHang"].Value.ToString();
+                    txtSoluong.Text = dgvhang.CurrentRow.Cells["SoLuong"].Value.ToString();
+                    txtDongianhap.Text = dgvhang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
+                    txtDongiaban.Text = dgvhang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
+
+                    MemoryStream mem = new MemoryStream(BusHang.gethinhHang(txtMahang.Text));
+                    pbImage.BackgroundImage = Image.FromStream(mem);
+                    pbImage.BackgroundImageLayout = ImageLayout.Stretch;
+
+                    txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
+                    errorTenHang.SetError(txtTenhang, null);
+                    errorSoLuong.SetError(txtSoluong, null);
+                    errorGiaNhap.SetError(txtDongianhap, null);
+                    errorGiaBan.SetError(txtDongiaban, null);
+                }
             }
             else
             {
@@ -328,7 +340,7 @@ namespace GUI_QLBANHANG
 
         private void txttimKiem_MouseEnter(object sender, EventArgs e)
         {
-            txttimKiem.Text = null;
+           
         }
 
         private void txtTenhang_Validating(object sender, CancelEventArgs e)
@@ -362,6 +374,11 @@ namespace GUI_QLBANHANG
             if (!float.TryParse(txtDongiaban.Text, out DonGiaBan)) errorGiaNhap.SetError(txtDongiaban, "Đơn giá bán phải là một số");
             else if (float.Parse(txtDongiaban.Text) <= 0) errorGiaBan.SetError(txtDongiaban, "Đơn giá bán phải lớn hơn 0");
             else errorGiaNhap.SetError(txtDongiaban, null);
+        }
+
+        private void txttimKiem_Enter(object sender, EventArgs e)
+        {
+            txttimKiem.Text = null;
         }
     }
 }

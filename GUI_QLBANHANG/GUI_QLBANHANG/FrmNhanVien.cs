@@ -22,6 +22,7 @@ namespace GUI_QLBANHANG
             InitializeComponent();
         }
 
+        // Load Danh sách Nhân viên từ dataridview lên textbox
         private  void LoadGridView(DataGridView dgvNhanvien)
         {
             if (dgvNhanvien.Rows.Count > 1)
@@ -63,6 +64,7 @@ namespace GUI_QLBANHANG
 
         }
 
+        //check mail hợp lệ
         public bool IsValid(string email)
         {
             try
@@ -77,6 +79,8 @@ namespace GUI_QLBANHANG
             }
         }
 
+        
+        // load trạng thái ban đầu form
         private void loadFrm()
         {
             txtSearch.Text = "Nhập tên nhân viên";
@@ -103,6 +107,7 @@ namespace GUI_QLBANHANG
             errorDiachi.SetError(txtDiachi, null);
         }
 
+        //Load danh sách  vào gridview
         private void LoadDanhSach(DataTable dt)
         {
             dgvNhanvien.DataSource = dt;
@@ -113,6 +118,7 @@ namespace GUI_QLBANHANG
             dgvNhanvien.Columns[4].HeaderText = "Tình Trạng";
         }
 
+        //hiển thị lỗi ra màng hình
         private void showerror()
         {
             if (string.IsNullOrWhiteSpace(txtEmail.Text)) errorEmail.SetError(txtEmail, "Nhập email nhân viên");
@@ -131,7 +137,8 @@ namespace GUI_QLBANHANG
             LoadDanhSach(busNV.getNhanVien());
             loadFrm();
         }
-
+    
+        //Enable textbox và các nút
         private void btnThem_Click(object sender, EventArgs e)
         {
             txtEmail.Focus();
@@ -159,6 +166,7 @@ namespace GUI_QLBANHANG
         }
 
         
+        //Thêm nhân viên
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(txtEmail.Text)&& busNV.IsValidEmail(txtEmail.Text)&& !string.IsNullOrWhiteSpace(txtTennv.Text)&&!string.IsNullOrWhiteSpace(txtDiachi.Text))
@@ -204,6 +212,8 @@ namespace GUI_QLBANHANG
             
         }
 
+
+        //Xoá Nhân viên
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(txtEmail.Text))
@@ -235,11 +245,17 @@ namespace GUI_QLBANHANG
            
         }
 
+
+
+        
         private void dgvNhanvien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             LoadGridView(dgvNhanvien);
         }
 
+
+
+        // Cập nhật nhân viên
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txtEmail.Text) && busNV.IsValidEmail(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtTennv.Text) && !string.IsNullOrWhiteSpace(txtDiachi.Text))

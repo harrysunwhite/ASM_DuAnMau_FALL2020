@@ -55,6 +55,7 @@ namespace GUI_QLBANHANG
             errorHoTen.SetError(txtTenkhach, null);
             errorDT.SetError(txtDienthoai, null);
             errorDiaChi.SetError(txtDiachi, null);
+            txttimKiem.Text = "Nhập số điện thoại khách hàng";
         }
 
         private void LoadDanhSach(DataTable dt)
@@ -67,6 +68,17 @@ namespace GUI_QLBANHANG
             dgvkhach.Columns[4].HeaderText = "Nhân viên Giới thiệu";
         }
 
+        public bool checksdt(string sdt, BUS_KhachHang kh)
+        {
+            DataTable danhsachKH = kh.getKhach();
+            foreach (DataRow row in danhsachKH.Rows)
+            {
+                if (string.Compare(sdt, row[0].ToString(), true) == 0)
+                    return true;
+
+            }
+            return false;
+        }
         private void FrmKhach_Load(object sender, EventArgs e)
         {
             loadFrm();
@@ -103,24 +115,33 @@ namespace GUI_QLBANHANG
      
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(txtDienthoai.Text)&&BusKH.isvailphone(txtDienthoai.Text)&&!string.IsNullOrWhiteSpace(txtTenkhach.Text)&&string.IsNullOrWhiteSpace(txtDiachi.Text))
+            if(!string.IsNullOrWhiteSpace(txtDienthoai.Text)&&BusKH.isvailphone(txtDienthoai.Text)&&!string.IsNullOrWhiteSpace(txtTenkhach.Text)&&!string.IsNullOrWhiteSpace(txtDiachi.Text))
             {
-                string userMail = FrmMain.mail;
-                string phai = "Nữ";
-                if (rbnam.Checked == true)
-                    phai = "Nam";
-                DTO_KhachHang kh = new DTO_KhachHang(txtDienthoai.Text, txtTenkhach.Text,
-                        txtDiachi.Text, phai, userMail);
-                if (BusKH.InsertKhach(kh))
+                if(!checksdt(txtDienthoai.Text,BusKH))
                 {
-                    MessageBox.Show("Thêm thành công");
-                    loadFrm();
-                    LoadDanhSach(BusKH.getKhach());
+                    string userMail = FrmMain.mail;
+                    string phai = "Nữ";
+                    if (rbnam.Checked == true)
+                        phai = "Nam";
+                    DTO_KhachHang kh = new DTO_KhachHang(txtDienthoai.Text, txtTenkhach.Text,
+                            txtDiachi.Text, phai, userMail);
+                    if (BusKH.InsertKhach(kh))
+                    {
+                        MessageBox.Show("Thêm thành công");
+                        loadFrm();
+                        LoadDanhSach(BusKH.getKhach());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm ko thành công");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Thêm ko thành công");
-                }
+                    MessageBox.Show("Số điện thoại khách hàng này đã tồn tại vui lòng kiểm tra lại!");
+                }    
+                
+               
             }    
             else
             {
@@ -146,6 +167,7 @@ namespace GUI_QLBANHANG
             rbnu.Enabled = true;
             rbnam.Enabled = true;
             dgvkhach.Enabled = false;
+            txttimKiem.Text = "Nhập số điện thoại khách hàng";
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -196,7 +218,7 @@ namespace GUI_QLBANHANG
         {
             btnLuu.Enabled = false;
             txtDiachi.Enabled = true;
-            txtDienthoai.Enabled = true;
+            txtDienthoai.Enabled = false;
             txtTenkhach.Enabled = true;
             rbnu.Enabled = true;
             rbnam.Enabled = true;
@@ -211,7 +233,7 @@ namespace GUI_QLBANHANG
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtDienthoai.Text) && BusKH.isvailphone(txtDienthoai.Text) && !string.IsNullOrWhiteSpace(txtTenkhach.Text) && string.IsNullOrWhiteSpace(txtDiachi.Text))
+            if (!string.IsNullOrWhiteSpace(txtDienthoai.Text) && BusKH.isvailphone(txtDienthoai.Text) && !string.IsNullOrWhiteSpace(txtTenkhach.Text) && !string.IsNullOrWhiteSpace(txtDiachi.Text))
             {
                 string phai = "Nữ";
                 if (rbnam.Checked == true) phai = "Nam";
@@ -259,7 +281,7 @@ namespace GUI_QLBANHANG
 
         private void txttimKiem_MouseEnter(object sender, EventArgs e)
         {
-            txttimKiem.Text = null;
+            
         }
 
         private void txtDienthoai_Validating(object sender, CancelEventArgs e)
@@ -282,6 +304,21 @@ namespace GUI_QLBANHANG
 
             if (string.IsNullOrWhiteSpace(txtDiachi.Text)) errorDiaChi.SetError(txtDiachi, "Không dể trống địa chỉ khách hàng");
             else errorDiaChi.SetError(txtDiachi, null);
+        }
+
+        private void txttimKiem_Enter(object sender, EventArgs e)
+        {
+            txttimKiem.Text = null;
+        }
+
+        private void dgvkhach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtDiachi_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

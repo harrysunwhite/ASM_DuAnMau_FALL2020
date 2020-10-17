@@ -140,6 +140,7 @@ namespace DTO_Qlbanhang
             this._ghiChu = ghiChu;
             this.EmailNV = emailnv;
         }
+        public DTO_Hang() { }
     }
 
 }

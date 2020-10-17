@@ -13,6 +13,6 @@ namespace DAL_Qlbanhang
        
      
         //    protected SqlConnection _conn = new SqlConnection(@"Data Source=.;Initial Catalog=Qlbanhang;Integrated Security=True");
-        protected SqlConnection _conn = new SqlConnection(@"Data Source=.;AttachDbFilename=|DataDirectory|\Qlbanhang.mdf;Integrated Security=True");
+        protected SqlConnection _conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Qlbanhang.mdf;Integrated Security=True");
     }
 }

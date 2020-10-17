@@ -35,12 +35,12 @@ namespace DAL_Qlbanhang
 
         public bool ThemKhach(DTO_KhachHang kh)
         {
-            //using store procedure
+            
             try
             {
                
                 _conn.Open();
-                // Command (mặc định command type = text nên chúng ta khỏi fải làm gì nhiều).
+              
                 SqlCommand cm = new SqlCommand();
                 cm.Connection = _conn;
                 cm.CommandType = CommandType.StoredProcedure;
@@ -50,7 +50,7 @@ namespace DAL_Qlbanhang
                 cm.Parameters.AddWithValue("DiaChi", kh.DiaChi);
                 cm.Parameters.AddWithValue("phai", kh.Phai);
                 cm.Parameters.AddWithValue("Email", kh.EmailNV);
-                // Query và kiểm tra
+                
                 if (cm.ExecuteNonQuery() > 0)
                     return true;
             }

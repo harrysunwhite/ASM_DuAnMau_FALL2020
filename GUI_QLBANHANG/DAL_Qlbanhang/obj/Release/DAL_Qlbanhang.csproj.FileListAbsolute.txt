@@ -1,0 +1,13 @@
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Release\DAL_Qlbanhang.csprojAssemblyReference.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Release\DAL_Qlbanhang.csproj.CoreCompileInputs.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Release\DAL_Qlbanhang.csproj.CopyComplete
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Release\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\obj\Release\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DAL_Qlbanhang\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml

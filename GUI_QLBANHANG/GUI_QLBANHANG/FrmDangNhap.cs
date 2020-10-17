@@ -33,8 +33,8 @@ namespace GUI_QLBANHANG
             try
             {
                 string startupPath = Environment.CurrentDirectory;
-                string txtpath = Directory.GetParent(startupPath).Parent.Parent.FullName;
-                string file = txtpath + @"\UserInfor.txt";
+               
+                string file = startupPath + @"\UserInfor.txt";
                
                 using (FileStream fsr = new FileStream(file, FileMode.Open, FileAccess.Read))
                 {
@@ -61,26 +61,28 @@ namespace GUI_QLBANHANG
             try
             {
                 string startupPath = Environment.CurrentDirectory;
-                string txtpath = Directory.GetParent(startupPath).Parent.Parent.FullName;
-                string file = txtpath + @"\UserInfor.txt";
+                
+                string file = startupPath + @"\UserInfor.txt";
+
                 if (!File.Exists(file))
                 {
                     using (var stream = File.Create(file))
                     {
 
                     }
-                    using (StreamWriter sw = new StreamWriter(file))
-                    {
-                        sw.Write(nv.EmailNV);
-                    }
+
                 }
-                else
-                    using (StreamWriter sw = new StreamWriter(file, false))
+                FileInfo fileinfor = new FileInfo(file);
+                fileinfor.Attributes = FileAttributes.Normal;
+                using (StreamWriter sw = new StreamWriter(file, false))
                     {
+                        
+                       
+                        
                         sw.Write(nv.EmailNV);
                     }
 
-
+                fileinfor.Attributes = FileAttributes.Hidden;
 
 
             }
@@ -274,6 +276,11 @@ namespace GUI_QLBANHANG
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtemail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
     

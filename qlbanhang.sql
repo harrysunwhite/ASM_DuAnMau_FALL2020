@@ -219,7 +219,7 @@ go
 -- thêm thông tin khách
 CREATE PROCEDURE Sp_InsertKhach
 @dienThoai varchar(15),@tenKhach nvarchar(50),
-@diaChi nvarchar(100),@phai nvarchar(5),@email varchar(20)
+@diaChi nvarchar(100),@phai nvarchar(5),@email varchar(50)
 AS
 BEGIN
 DECLARE @Manv VARCHAR(20);
@@ -279,7 +279,7 @@ CREATE PROCEDURE Sp_InsertHang
 @donGiaBan float,
 @hinhAnh image,
 @ghiChu nvarchar(50),
-@email varchar(20)
+@email varchar(50)
 AS
 BEGIN
 DECLARE @Manv VARCHAR(20);
@@ -332,10 +332,12 @@ BEGIN
 END
 go
 -- thống kê hàng hoá theo so lượng
-CREATE PROCEDURE Sp_ThongKe
+-- thống kê hàng hoá theo so lượng
+CREATE PROCEDURE Sp_ThongKeTonKho
 AS
 BEGIN
-	select MaHang, TenHang, SoLuong from Hang;
+	select TenHang, SUM(SoLuong) from Hang
+	group by TenHang;
 END
 
 -- thống kê hang hoá sắp xep theo tên nhan vien nhap vao
@@ -345,7 +347,7 @@ go
 CREATE PROCEDURE Sp_ThongKeNhap
 AS
 BEGIN
-	SELECT tenNv, MaHang, TenHang FROM NhanVien JOIN Hang ON NhanVien.MaNv = Hang.Manv
-	GROUP BY NhanVien.tenNv,MaHang,TenHang
-	ORDER BY NhanVien.tenNv
+	SELECT hang.Manv, tenNv, COUNT(MaHang) FROM NhanVien JOIN Hang ON NhanVien.MaNv = Hang.Manv
+	GROUP BY NhanVien.tenNv,Hang.Manv
+	ORDER BY NhanVien.tenNv;
 END

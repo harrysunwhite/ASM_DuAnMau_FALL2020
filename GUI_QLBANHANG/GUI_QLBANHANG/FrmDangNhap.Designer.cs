@@ -134,6 +134,7 @@
             this.txtemail.Name = "txtemail";
             this.txtemail.Size = new System.Drawing.Size(274, 20);
             this.txtemail.TabIndex = 10;
+            this.txtemail.TextChanged += new System.EventHandler(this.txtemail_TextChanged);
             // 
             // label1
             // 
@@ -148,7 +149,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GUI_QLBANHANG.Properties.Resources.login;
             this.pictureBox1.Location = new System.Drawing.Point(128, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 42);

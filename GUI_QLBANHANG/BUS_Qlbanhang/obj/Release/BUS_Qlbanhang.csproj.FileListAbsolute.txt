@@ -1,0 +1,11 @@
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\BUS_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\BUS_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\DAL_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\DAL_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\bin\Release\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Release\BUS_Qlbanhang.csprojAssemblyReference.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Release\BUS_Qlbanhang.csproj.CoreCompileInputs.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Release\BUS_Qlbanhang.csproj.CopyComplete
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Release\BUS_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\BUS_Qlbanhang\obj\Release\BUS_Qlbanhang.pdb

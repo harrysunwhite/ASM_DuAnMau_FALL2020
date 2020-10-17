@@ -4,3 +4,8 @@ D:\SOF205\ASM\project\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.csproj
 D:\SOF205\ASM\project\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.csproj.CoreCompileInputs.cache
 D:\SOF205\ASM\project\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.dll
 D:\SOF205\ASM\project\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DTO_Qlbanhang\bin\Debug\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DTO_Qlbanhang\bin\Debug\DTO_Qlbanhang.pdb
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.csproj.CoreCompileInputs.cache
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.dll
+D:\SOF205\ASM\project\ASM_DuAnMau_FALL2020\GUI_QLBANHANG\DTO_Qlbanhang\obj\Debug\DTO_Qlbanhang.pdb
