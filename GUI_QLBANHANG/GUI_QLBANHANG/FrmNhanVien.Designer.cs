@@ -73,6 +73,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Lavender;
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.rbNgung);
             this.panel2.Controls.Add(this.rbHoatDong);
@@ -92,6 +93,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(934, 166);
             this.panel2.TabIndex = 4;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // panel4
             // 
@@ -102,7 +104,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.panel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel4.Size = new System.Drawing.Size(168, 44);
+            this.panel4.Size = new System.Drawing.Size(202, 44);
             this.panel4.TabIndex = 13;
             // 
             // rbNhanvien
@@ -120,7 +122,7 @@
             // 
             this.rbQuantri.AutoSize = true;
             this.rbQuantri.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbQuantri.Location = new System.Drawing.Point(84, 17);
+            this.rbQuantri.Location = new System.Drawing.Point(122, 17);
             this.rbQuantri.Name = "rbQuantri";
             this.rbQuantri.Size = new System.Drawing.Size(77, 24);
             this.rbQuantri.TabIndex = 9;
@@ -163,10 +165,10 @@
             // txtDiachi
             // 
             this.txtDiachi.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiachi.Location = new System.Drawing.Point(520, 45);
+            this.txtDiachi.Location = new System.Drawing.Point(520, 54);
             this.txtDiachi.Multiline = true;
             this.txtDiachi.Name = "txtDiachi";
-            this.txtDiachi.Size = new System.Drawing.Size(373, 70);
+            this.txtDiachi.Size = new System.Drawing.Size(373, 61);
             this.txtDiachi.TabIndex = 6;
             this.txtDiachi.Validating += new System.ComponentModel.CancelEventHandler(this.txtDiachi_Validating);
             // 
@@ -183,7 +185,7 @@
             // 
             this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(157, 45);
+            this.txtEmail.Location = new System.Drawing.Point(157, 54);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(261, 27);
             this.txtEmail.TabIndex = 2;
@@ -227,7 +229,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(43, 64);
+            this.label2.Location = new System.Drawing.Point(43, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 20);
             this.label2.TabIndex = 1;
@@ -236,13 +238,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(430, 0);
+            this.label1.Location = new System.Drawing.Point(351, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 37);
+            this.label1.Size = new System.Drawing.Size(200, 45);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nhân Viên";
+            this.label1.Text = "NHÂN VIÊN";
             // 
             // panel1
             // 
@@ -395,6 +397,7 @@
             this.dgvNhanvien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNhanvien.Location = new System.Drawing.Point(0, 166);
             this.dgvNhanvien.Name = "dgvNhanvien";
+            this.dgvNhanvien.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -424,6 +427,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 541);
+            this.ControlBox = false;
             this.Controls.Add(this.dgvNhanvien);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -431,6 +435,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ NHÂN VIÊN";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmNhanVien_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

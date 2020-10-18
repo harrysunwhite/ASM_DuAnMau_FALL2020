@@ -39,14 +39,14 @@ namespace GUI_QLBANHANG
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
                   
-                    txtEmail.Text = dgvNhanvien.CurrentRow.Cells[0].Value.ToString();
-                    txtTennv.Text = dgvNhanvien.CurrentRow.Cells[1].Value.ToString();
-                    txtDiachi.Text = dgvNhanvien.CurrentRow.Cells[2].Value.ToString();
-                    if (string.Compare(dgvNhanvien.CurrentRow.Cells[3].Value.ToString(),"Quản lý",true)==0)
+                    txtEmail.Text = dgvNhanvien.CurrentRow.Cells[1].Value.ToString();
+                    txtTennv.Text = dgvNhanvien.CurrentRow.Cells[2].Value.ToString();
+                    txtDiachi.Text = dgvNhanvien.CurrentRow.Cells[3].Value.ToString();
+                    if (string.Compare(dgvNhanvien.CurrentRow.Cells[4].Value.ToString(),"Quản lý",true)==0)
                         rbQuantri.Checked = true;
                     else
                         rbNhanvien.Checked = true;
-                    if (string.Compare(dgvNhanvien.CurrentRow.Cells[4].Value.ToString(),"Hoạt động", true) == 0)
+                    if (string.Compare(dgvNhanvien.CurrentRow.Cells[5].Value.ToString(),"Hoạt động", true) == 0)
                         rbHoatDong.Checked = true;
                     else
                         rbNgung.Checked = true;
@@ -111,11 +111,12 @@ namespace GUI_QLBANHANG
         private void LoadDanhSach(DataTable dt)
         {
             dgvNhanvien.DataSource = dt;
-            dgvNhanvien.Columns[0].HeaderText = "Email";
-            dgvNhanvien.Columns[1].HeaderText = "Tên Nhân Viên";
-            dgvNhanvien.Columns[2].HeaderText = "Địa chỉ";
-            dgvNhanvien.Columns[3].HeaderText = "Vai Trò";
-            dgvNhanvien.Columns[4].HeaderText = "Tình Trạng";
+            dgvNhanvien.Columns[0].HeaderText = "Mã Nhân viên";
+            dgvNhanvien.Columns[1].HeaderText = "Email";
+            dgvNhanvien.Columns[2].HeaderText = "Tên Nhân Viên";
+            dgvNhanvien.Columns[3].HeaderText = "Địa chỉ";
+            dgvNhanvien.Columns[4].HeaderText = "Vai Trò";
+            dgvNhanvien.Columns[5].HeaderText = "Tình Trạng";
         }
 
         //hiển thị lỗi ra màng hình
@@ -147,6 +148,7 @@ namespace GUI_QLBANHANG
             txtDiachi.Text = null;
             txtTennv.Enabled = true;
             txtEmail.Enabled = true;
+            txtDiachi.Enabled = true;
             btnLuu.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
@@ -356,6 +358,11 @@ namespace GUI_QLBANHANG
         {
             if (string.IsNullOrWhiteSpace(txtDiachi.Text)) errorDiachi.SetError(txtDiachi, "Không để trống địa chỉ");
             else errorDiachi.SetError(txtDiachi, null);
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

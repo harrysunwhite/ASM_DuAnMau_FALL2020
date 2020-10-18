@@ -45,10 +45,13 @@ namespace GUI_QLBANHANG
             if (!CheckExistFrm(frm.Name))
             {
                 
-                Hidelb(sender, e);
+                //Hidelb(sender, e);
                 frm.MdiParent = this;
+                frm.Dock = DockStyle.Fill;
+                
                 frm.Show();
                 frm.FormClosed += new FormClosedEventHandler(CloseFrm);
+                ActiveCurrentForm(frm.Name);
 
             }
             else
@@ -65,12 +68,12 @@ namespace GUI_QLBANHANG
             InitializeComponent();
            
         }
-        private void Hidelb(object sender, EventArgs e)
-        {
-            this.IsMdiContainer = true;
-            lbName.Visible = false;
-            lbHK.Visible = false;
-        }
+        //private void Hidelb(object sender, EventArgs e)
+        //{
+        //    this.IsMdiContainer = true;
+        //    lbName.Visible = false;
+        //    lbHK.Visible = false;
+        //}
 
         private void ActiveCurrentForm(string name)
         {
@@ -129,8 +132,10 @@ namespace GUI_QLBANHANG
             {
                 FrmDangNhap dn = new FrmDangNhap();
 
-                Hidelb(sender, e);
+                //Hidelb(sender, e);
+                
                 dn.MdiParent = this;
+               
                 dn.Show();
                 dn.FormClosed += new FormClosedEventHandler(CloseFrm);
             }
@@ -174,8 +179,8 @@ namespace GUI_QLBANHANG
                     danhMucToolStripMenuItem.Visible = false;
                     thongKeToolStripMenuItem.Visible = false;
                     labelUser.Text = null;
-                    lbName.Visible = true;
-                    lbHK.Visible = true;
+                    //lbName.Visible = true;
+                    //lbHK.Visible = true;
                 }
 
             //}
@@ -195,6 +200,7 @@ namespace GUI_QLBANHANG
         public void FrmMain_Load(object sender, EventArgs e)
         {
             StartProgram();
+            this.IsMdiContainer = true;
         }
 
         private void thongKeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,8 +209,23 @@ namespace GUI_QLBANHANG
 
         private void hosoNVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDoimk dmk = new FrmDoimk(mail);
-            openFrm(dmk, sender, e);
+           
+            if (!CheckExistFrm("FrmDoimk"))
+            {
+                FrmDoimk dmk = new FrmDoimk(mail);
+
+                //Hidelb(sender, e);
+               
+                dmk.MdiParent = this;
+
+                dmk.Show();
+                dmk.FormClosed += new FormClosedEventHandler(CloseFrm);
+            }
+            else
+            {
+                ActiveCurrentForm("FrmDoimk");
+            }
+
         }
 
         private void hanghoaToolStripMenuItem_Click(object sender, EventArgs e)

@@ -73,6 +73,7 @@
             this.dgvsp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvsp.Location = new System.Drawing.Point(3, 3);
             this.dgvsp.Name = "dgvsp";
+            this.dgvsp.ReadOnly = true;
             this.dgvsp.Size = new System.Drawing.Size(920, 509);
             this.dgvsp.TabIndex = 0;
             this.dgvsp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvsp_CellContentClick);
@@ -99,6 +100,7 @@
             this.dgvtonkho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvtonkho.Location = new System.Drawing.Point(3, 3);
             this.dgvtonkho.Name = "dgvtonkho";
+            this.dgvtonkho.ReadOnly = true;
             this.dgvtonkho.Size = new System.Drawing.Size(920, 509);
             this.dgvtonkho.TabIndex = 0;
             // 

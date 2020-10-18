@@ -44,8 +44,6 @@
             this.huongDanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.huongDanSDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbName = new System.Windows.Forms.Label();
-            this.lbHK = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -196,30 +194,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.aboutToolStripMenuItem.Text = "Giới thiệu phần mềm";
             // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.CausesValidation = false;
-            this.lbName.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.ForeColor = System.Drawing.Color.Brown;
-            this.lbName.Location = new System.Drawing.Point(150, 82);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(643, 50);
-            this.lbName.TabIndex = 1;
-            this.lbName.Text = "QUẢN LÝ BÁN HÀNG - DỰ ÁN MẪU";
-            // 
-            // lbHK
-            // 
-            this.lbHK.AutoSize = true;
-            this.lbHK.CausesValidation = false;
-            this.lbHK.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHK.ForeColor = System.Drawing.Color.Brown;
-            this.lbHK.Location = new System.Drawing.Point(269, 170);
-            this.lbHK.Name = "lbHK";
-            this.lbHK.Size = new System.Drawing.Size(342, 50);
-            this.lbHK.TabIndex = 2;
-            this.lbHK.Text = "HỌC KỲ FALL 2020";
-            // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
@@ -235,11 +209,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.BackgroundImage = global::GUI_QLBANHANG.Properties.Resources.Background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(967, 621);
             this.Controls.Add(this.labelUser);
-            this.Controls.Add(this.lbHK);
-            this.Controls.Add(this.lbName);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -271,8 +244,6 @@
         private System.Windows.Forms.ToolStripMenuItem huongDanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem huongDanSDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.Label lbHK;
         private System.Windows.Forms.Label labelUser;
     }
 }

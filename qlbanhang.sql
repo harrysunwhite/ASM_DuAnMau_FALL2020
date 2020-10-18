@@ -140,7 +140,7 @@ go
 Create PROCEDURE Sp_DanhSachNV
 AS
 BEGIN
-      SELECT email, tenNv, diachi,case 
+      SELECT MaNv,email, tenNv, diachi,case 
 		when vaiTro = 1 then N'Quản lý'
 		else N'Nhân viên' end as 'vaitro', case 
 		when tinhTrang = 1 then N'Hoạt động'

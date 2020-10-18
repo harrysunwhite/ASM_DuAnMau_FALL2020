@@ -179,9 +179,7 @@
   <ItemGroup>
     <None Include="Images\full+products+round+icon-1320165923168064523.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="icon\add-icon.png" />
   </ItemGroup>
@@ -198,6 +196,7 @@
     <None Include="icon\Save-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Background.jpg" />
     <Content Include="unnamed.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
